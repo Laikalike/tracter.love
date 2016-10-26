@@ -1,13 +1,25 @@
+local Renderer = require "states/maingame/tools/renderer"
+local GameLoop = require "states/maingame/tools/gameLoop"
+
+renderer = Renderer:create()
+gameLoop = GameLoop:create()
+
+g_Width  = love.graphics.getWidth()
+g_Height = love.graphics.getHeight()
+
+g_GameTime = 0
+
 function love.load()
-  days = 0
+
 end
 
 function love.update(dt)
-  delta = dt * 69
-  days = days + delta
+  g_GameTime = g_GameTime + dt
+
+--  gameLoop:update(dt)
 end
 
 function love.draw()
-  love.graphics.print("Retrace.love placeholder build-thing")
-  love.graphics.print(days .. " days until game is complete", 0, 32)
+  love.graphics.print(g_GameTime)
+  renderer:draw()
 end
