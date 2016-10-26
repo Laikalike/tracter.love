@@ -1,3 +1,4 @@
+-- Gamestate loader, in subsequent main.lua's, load() is called over love.load()
 function clearLoveCallbacks()
 	love.draw = nil
 	love.joystickpressed = nil
