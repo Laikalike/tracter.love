@@ -1,28 +1,19 @@
 -- GameLoop class, deals with creating tick loops for objects individually, instead of all as a whole.
 local GameLoop = {}
 
-local insert = table.insert
-local remove = table.remvoe
+function GameLoop:load()
+  self.tickers = {}
+end
 
-function GameLoop:create()
-  local gameloop = {}
+function GameLoop:addLoop(obj)
+  table.insert(self.tickers,obj)
+end
 
-  gameloop.tickers = {}
-
-  function gameloop:addLoop(obj)
-    insert(self.tickers,obj)
+function GameLoop:update(dt)
+  for i = 1,#self.tickers do
+    local obj = self.tickers[i]
+    obj:tick(dt)
   end
-
-  function gameloop:update(dt)
-    for tickers = 0,#self.tickers do
-      local obj = self.tickers[tickers]
-      if obj ~= nil then
-        obj:tick(dt)
-      end
-    end
-  end
-
-  return renderer
 end
 
 return GameLoop
