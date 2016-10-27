@@ -4,7 +4,7 @@ local tlm = {}
 local width  = 128
 local height = 128
 
-local size = 16
+local size = 70
 
 function tlm:load()
   renderer:addRenderer(self)
