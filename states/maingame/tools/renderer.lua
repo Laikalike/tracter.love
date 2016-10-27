@@ -15,7 +15,7 @@ function Renderer:addRenderer(obj, layer)
   table.insert(self.renderers[l],obj)
 end
 
-function Renderer:update(dt)
+function Renderer:draw(dt)
   for layer = 1,#self.renderers do
     for i = 1,#self.renderers[layer] do
       local obj = self.renderers[layer][i]
