@@ -24,6 +24,7 @@ end
 function Tlm:load()
   self.tiles = {}
   self.img = love.graphics.newImage("states/maingame/assets/tileset_placeholder.png")
+  self.img:setFilter("nearest", "nearest")
 
   renderer:addRenderer(self)
 end
