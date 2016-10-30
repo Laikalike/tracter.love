@@ -13,7 +13,7 @@ end
 function ASM:get(id)
   for i,a in ipairs(self.assets) do
     if a.id == id then
-      return a.assets
+      return a.asset
     end
   end
 end
