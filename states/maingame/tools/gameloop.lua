@@ -9,6 +9,10 @@ function GameLoop:addLoop(obj)
   table.insert(self.tickers,obj)
 end
 
+function GameLoop:removeLoop(obj)
+  table.remove(self.tickers,obj)
+end
+
 function GameLoop:update(dt)
   for i = 1,#self.tickers do
     local obj = self.tickers[i]
