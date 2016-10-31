@@ -30,14 +30,17 @@ function Tlm:load()
 end
 
 function Tlm:draw()
-  for i = 1,#self.tiles do
-    for j = 1,#self.tiles do
 
-      if self.tiles[i][j] ~= nil then
-        local tile = self.tiles[i][j]
-        love.graphics.draw(self.img,tile.quad,tile.pos.x,tile.pos.y)
+  for layer = 1,#self.tiles do
+    for i = 1,32 do
+      for j = 1,32 do
+
+        if self.tiles[layer][i][j] ~= nil then
+          local tile = self.tiles[layer][i][j]
+          love.graphics.draw(self.img,tile.quad,tile.pos.x,tile.pos.y)
+        end
+
       end
-
     end
   end
 end
@@ -45,26 +48,33 @@ end
 function Tlm:loadmap(mapname)
   local map = require("states/maingame/assets/maps/"..mapname)
 
-  for i = 1,map.height do self.tiles[i] = {} end
+  for layer = 1,#map.layers do
+    self.tiles[layer] = {}
+    for i = 1,map.height do
+      self.tiles[layer][i] = {}
+    end
+  end
 
   for layer = 1,#map.layers do
     local data = map.layers[layer].data
---    local prop = map.layers[prop].data
+    local prop = map.layers[layer].properties
 
     for y = 1,map.height do
-      for x = 1,map.width do
+      for x = 1, map.height do
 
-        local index = (y * map.height + (x + 1) - map.width) - 1
+        local index = ( y * map.height + ( x - 1 ) - map.width ) + 1
 
         if data[index] ~= 0 then
+
           local q = quads[data[index]]
-          self.tiles[y][x] = tile(70 * x - 70, 70 * y - 70, 70, 70, q)
+          self.tiles[layer][y][x] = tile ( 70 * x - 70, 70 * y - 70, 70, 70, q)
 
         end
 
       end
     end
   end
+
 end
 
 function Tlm:destroy()
