@@ -1,4 +1,4 @@
-local tlm = require "states/maingame/tools/tlm"
+tlm       = require "states/maingame/tools/tlm"
 
 gameLoop  = require "states/maingame/tools/gameLoop"
 renderer  = require "states/maingame/tools/renderer"
@@ -37,5 +37,5 @@ function love.draw()
   camera:set()
   renderer:draw()
   camera:unset()
-  love.graphics.print("x = " .. MX .. "/" .. Width .. " y = " .. MY .. "/" .. Height)
+  love.graphics.print("tracter.love in-dev build // x = " .. MX .. "/" .. Width .. " y = " .. MY .. "/" .. Height)
 end
