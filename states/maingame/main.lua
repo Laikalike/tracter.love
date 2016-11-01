@@ -20,8 +20,10 @@ function load()
   renderer:load()
   tlm:load()
   obm:load()
-
+  
+  gen_quads(355,70,71,71,1)
   tlm:loadmap("map_test")
+
 
   love.timer.sleep( 0.25 ) --Hotfix to make sure things load properly. will redo sooooon(tm)
 
