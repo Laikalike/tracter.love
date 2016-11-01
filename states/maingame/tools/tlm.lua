@@ -45,6 +45,14 @@ function Tlm:draw()
   end
 end
 
+function Tlm:is_solid_at_pos(x,y)
+  local solids = self.tiles[1]
+  if solids[y][x] ~= nil then
+    return true
+  end
+  return false
+end
+
 function Tlm:loadmap(mapname)
   local map = require("states/maingame/assets/maps/"..mapname)
 
@@ -67,7 +75,7 @@ function Tlm:loadmap(mapname)
         if data[index] ~= 0 then
 
           local q = quads[data[index]]
-          self.tiles[layer][y][x] = tile ( 70 * x - 70, 70 * y - 70, 70, 70, q)
+          self.tiles[layer][y][x] = tile ( TILESIZE * x - TILESIZE, TILESIZE * y - TILESIZE, TILESIZE, TILESIZE, q)
 
         end
 
