@@ -21,6 +21,7 @@ function physics_jump(obj)
 end
 
 function physics_update(obj,tiles,dt)
+  if dt >= 0.2 then return end
   local x = floor(obj.pos.x / 70) - 1
   local y = floor(obj.pos.y / 70) - 1
   local w = 3

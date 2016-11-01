@@ -20,4 +20,16 @@ function OBM:add(obj)
   table.insert(self.objects,obj)
 end
 
+function OBM:get_obj_by_id(obj,id)
+
+    for i = 1,#self.objects do
+      local _obj = self.objects[i]
+      if _obj.id == id then
+        return _obj
+      end
+    end
+
+  return nil
+end
+
 return OBM

@@ -22,11 +22,13 @@ function load()
   tlm:loadmap("map_test")
 
   obm:add(require("states/maingame/objects/player"):new(500,1800))
+  obm:add(require("states/maingame/objects/zombie"):new(1000,1800))
 end
 
 function love.update(dt)
   gameLoop:update(dt)
   GAMETIME = GAMETIME + dt
+  DELTA = dt
   MX = love.mouse.getX()
   MY = love.mouse.getY()
 
@@ -38,4 +40,5 @@ function love.draw()
   renderer:draw()
   camera:unset()
   love.graphics.print("tracter.love in-dev build // x = " .. MX .. "/" .. Width .. " y = " .. MY .. "/" .. Height)
+  love.graphics.print("FPS: ".. love.timer.getFPS(), Width - 50)
 end
