@@ -31,12 +31,11 @@ function Zombie:new(x,y)
 
     local x_pos = floor(self.pos.x / TILESIZE)
     local y_pos = floor(self.pos.y / TILESIZE)+1
-
     if tlm:is_solid_at_pos(x_pos,y_pos) then
       physics_jump(self)
     end
 
-    if tlm:is_solid_at_pos(x_pos+3,y_pos) then
+    if tlm:is_solid_at_pos(x_pos+1,y_pos) then
       physics_jump(self)
     end
 

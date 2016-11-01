@@ -32,10 +32,6 @@ function physics_update(obj,tiles,dt)
 
   for i = y,y+h do
     for j = x,x+w do
-
-      if i > MAPHEIGHT then i = MAPHEIGHT end
-      if j > MAPWIDTH then i = MAPHEIGHT end
-
       local tile = tiles[i][j]
       if tile == nil then goto cont end
 

@@ -4,18 +4,12 @@ local Tlm = {}
 local quad = love.graphics.newQuad
 local quads =
 {
---  quad(0, 0, 70, 70, 355, 70),
---  quad(71, 0, 70, 70, 355, 70),
---  quad(142, 0, 70, 70, 355, 70),
---  quad(213, 0, 70, 70, 355, 70),
---  quad(284, 0, 70, 70, 355, 70)
+  quad(0, 0, 70, 70, 355, 70),
+  quad(71, 0, 70, 70, 355, 70),
+  quad(142, 0, 70, 70, 355, 70),
+  quad(213, 0, 70, 70, 355, 70),
+  quad(284, 0, 70, 70, 355, 70)
 }
-
-function gen_quads() --Tilesheet x/y, tilex/y + gap, gap
-  for i = 1, 5 do
-    table.insert(quads,quad(71*i-71,1,71,71,355,70))
-  end
-end
 
 function tile(x,y,w,h,quad)
   local tile = {}
@@ -29,7 +23,7 @@ end
 
 function Tlm:load()
   self.tiles = {}
-  self.img = love.graphics.newImage("states/maingame/assets/tileset.png")
+  self.img = love.graphics.newImage("states/maingame/assets/tileset_placeholder.png")
   self.img:setFilter("nearest", "nearest")
 
   renderer:addRenderer(self)
@@ -38,8 +32,8 @@ end
 function Tlm:draw()
 
   for layer = 1,#self.tiles do
-    for i = 1,MAPWIDTH do
-      for j = 1,MAPHEIGHT do
+    for i = 1,32 do
+      for j = 1,32 do
 
         if self.tiles[layer][i][j] ~= nil then
           local tile = self.tiles[layer][i][j]
@@ -61,8 +55,6 @@ end
 
 function Tlm:loadmap(mapname)
   local map = require("states/maingame/assets/maps/"..mapname)
-  MAPHEIGHT = map.height
-  MAPWIDTH = map.width
 
   for layer = 1,#map.layers do
     self.tiles[layer] = {}
