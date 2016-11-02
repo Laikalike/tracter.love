@@ -15,6 +15,11 @@ function Renderer:addRenderer(obj, layer)
   table.insert(self.renderers[l],obj)
 end
 
+function Renderer:removeRenderer(obj,layer)
+  local l = layer or 3
+  table.remove(self.renderes[l],obj)
+end
+
 function Renderer:draw(dt)
   for layer = 1,#self.renderers do
     for i = 1,#self.renderers[layer] do
