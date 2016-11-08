@@ -12,6 +12,11 @@ require "states/maingame/tools/camera"
 
 GAMETIME = 0
 TILESIZE = 70
+MAP_SIZE = 64
+
+local delta_time = {}
+local av_dt      = 0.016
+local sample     = 10
 
 function load()
   print("wewlad")
@@ -20,7 +25,7 @@ function load()
   renderer:load()
   tlm:load()
   obm:load()
-  
+
   gen_quads(355,70,71,71,1)
   tlm:loadmap("map_test")
 
@@ -31,10 +36,25 @@ function load()
   obm:add(require("states/maingame/objects/zombie"):new(1000,1800))
 end
 
+local pop, push = table.remove,
+                  table.insert
+
 function love.update(dt)
-  gameLoop:update(dt)
-  GAMETIME = GAMETIME + dt
-  DELTA = dt
+
+  push(delta_time,dt)
+  if #delta_time > sample then
+    local av  = 0
+    local num = #delta_time
+    for i = #delta_time,1,-1 do
+      av = av + delta_time[i]
+      pop(delta_time,i)
+    end
+
+    av_dt = av / num
+  end
+
+  gameLoop:update(av_dt)
+  GAMETIME = GAMETIME + av_dt
   MX = love.mouse.getX()
   MY = love.mouse.getY()
 
