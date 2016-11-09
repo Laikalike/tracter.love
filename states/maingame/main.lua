@@ -1,6 +1,6 @@
 tlm       = require "states/maingame/tools/tlm"
 
-gameLoop  = require "states/maingame/tools/gameLoop"
+gameLoop  = require "states/maingame/tools/gameloop"
 renderer  = require "states/maingame/tools/renderer"
 obm       = require "states/maingame/tools/obm"
 asm       = require "states/maingame/tools/asm"

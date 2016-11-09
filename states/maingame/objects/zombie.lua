@@ -5,7 +5,7 @@ local tiles = tlm.tiles[1]
 local floor = math.floor
 
 function Zombie:new(x,y)
-  local zombie = require("states/maingame/objects/entity"):new(x,y,70,70,nil,nil,"zombie")
+  local zombie = require("states/maingame/objects/entity"):new(x,y,50,28,nil,nil,"zombie")
 
   function zombie:load()
     gameLoop:addLoop(self)
@@ -20,7 +20,7 @@ function Zombie:new(x,y)
 
     local player = obm:get_obj_by_id(self, "player")
     if self.on_ground then
-      if self.pos.x < player.pos.x then
+      if self.pos.x < player.pos.x + 10 then
         self.vel.x = 210
       else
         self.vel.x = -210
