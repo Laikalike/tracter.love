@@ -29,7 +29,7 @@ end
 
 function Tlm:load()
   self.tiles = {}
-  self.img = love.graphics.newImage("states/maingame/assets/tileset.png")
+  self.img = love.graphics.newImage("assets/tile1_ss.png")
   self.img:setFilter("nearest", "nearest")
 
   renderer:addRenderer(self)
@@ -60,7 +60,7 @@ function Tlm:is_solid_at_pos(x,y)
 end
 
 function Tlm:loadmap(mapname)
-  local map = require("states/maingame/assets/maps/"..mapname)
+  local map = require("states/maingame/maps/"..mapname)
   MAPHEIGHT = map.height
   MAPWIDTH = map.width
 

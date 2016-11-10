@@ -33,7 +33,7 @@ function load()
   love.timer.sleep( 0.25 ) --Hotfix to make sure things load properly. will redo sooooon(tm)
 
   obm:add(require("states/maingame/objects/player"):new(500,1800))
-  obm:add(require("states/maingame/objects/zombie"):new(1000,1800))
+  obm:add(require("states/maingame/objects/slime"):new(1000,1800))
 end
 
 local pop, push = table.remove,
