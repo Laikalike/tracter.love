@@ -1,6 +1,5 @@
 -- Player class, inherits off entity, camera is centered on it.
 local Player = {}
-local image = love.graphics.newImage("assets/player_ss.png")
 require "states/maingame/world_physics/physics"
 
 local tiles = tlm.tiles[1]
@@ -22,14 +21,15 @@ local anim_data = {
   quad(423, 95, 66, 94, 494, 292) -- Jump
 }
 
-image:setFilter("nearest","nearest")
-
 function Player:new(x,y)
   local player = require("states/maingame/objects/entity"):new(x, y, 70, 94, nil, nil, "player")
 
   function player:load()
     gameLoop:addLoop(self)
     renderer:addRenderer(self)
+    asm:add("assets/player_ss.png","player")
+    image = love.graphics.newImage("assets/player_ss.png")
+    image:setFilter("nearest","nearest")
     physics_init(self,500)
 
     self.animation = require("states/maingame/tools/animation"):new(

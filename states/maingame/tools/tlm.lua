@@ -29,6 +29,7 @@ end
 
 function Tlm:load()
   self.tiles = {}
+  asm:add("assets/tile1_ss.png","tileset")
   self.img = love.graphics.newImage("assets/tile1_ss.png")
   self.img:setFilter("nearest", "nearest")
 

@@ -1,7 +1,6 @@
 require "states/maingame/world_physics/physics"
 
 local Slime = {}
-local image = love.graphics.newImage("assets/slime_ss.png")
 local tiles = tlm.tiles[1]
 local floor = math.floor
 
@@ -19,6 +18,8 @@ function Slime:new(x,y)
   function slime:load()
     gameLoop:addLoop(self)
     renderer:addRenderer(self)
+    asm:add("assets/slime_ss.png", "slime")
+    image = love.graphics.newImage("assets/slime_ss.png")
 
     physics_init(self,250)
 
