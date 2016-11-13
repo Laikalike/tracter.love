@@ -1,7 +1,6 @@
 # tracter.love
 
-Tracter/Retrace is a puzzle-platformer game inspired by 'The Company of Myself', 'Braid' and the character Tracer from Overwatch.
-You complete puzzles with the power of time travel, while co-existing with past versions of yourself.
+Engine tester for the toolbox.love engine.
 
 This project is written in the love2d framework, and will need it to run. (https://love2d.org/)
 
