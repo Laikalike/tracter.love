@@ -14,6 +14,14 @@ function Vec2:new(x,y)
     self.y = self.y + ny
   end
 
+  function vec2:unpack()
+  	return self.x, self.y
+  end
+
+  function vec2:tostring()
+  	return "("..tonumber(self.x)..","..tonumber(self.y)..")"
+  end
+
   return vec2
 end
 
