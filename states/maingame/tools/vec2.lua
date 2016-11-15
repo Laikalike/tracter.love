@@ -22,6 +22,8 @@ function Vec2:new(x,y)
   	return "("..tonumber(self.x)..","..tonumber(self.y)..")"
   end
 
+  function vec2:invert(a)  return new(-a.x, -a.y)  end
+  
   return vec2
 end
 
