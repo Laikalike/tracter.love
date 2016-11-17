@@ -1,6 +1,7 @@
 -- Player class, inherits off entity, camera is centered on it.
 local Player = {}
 require "states/maingame/world_physics/physics"
+local accelerate = require "states/maingame/tools/accelerate"
 
 local tiles = tlm.tiles[1]
 
@@ -73,13 +74,13 @@ function Player:new(x,y)
     if key("a") then
       self.animation:set_animation(2)
       self.dir.x = -1
-      self.vel.x = 500
+      accelerate:left(dt, self, 50, 500)
     end
 
     if key("d") then
       self.animation:set_animation(2)
       self.dir.x = 1
-      self.vel.x = 500
+      accelerate:right(dt, self, 50, 500)
     end
 
     physics_update(self,tiles,dt)
