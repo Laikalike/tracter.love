@@ -74,13 +74,13 @@ function Player:new(x,y)
     if key("a") then
       self.animation:set_animation(2)
       self.dir.x = -1
-      accelerate:left(dt, self, 50, 500)
+      accelerate:left(self, 50, 500)
     end
 
     if key("d") then
       self.animation:set_animation(2)
       self.dir.x = 1
-      accelerate:right(dt, self, 50, 500)
+      accelerate:right(self, 50, 500)
     end
 
     physics_update(self,tiles,dt)
